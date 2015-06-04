@@ -20,7 +20,7 @@ class Flags {
     template <typename T>
     void Var(T & var, char shortFlag, std::string longFlag, T defaultValue, std::string description, std::string descriptionGroup = "");
 
-    void Flag(bool & var, char shortFlag, std::string longFlag, std::string description, std::string descriptionGroup = "");
+    void Bool(bool & var, char shortFlag, std::string longFlag, std::string description, std::string descriptionGroup = "");
 
     bool Parse(int argc, char ** argv);
     void PrintHelp(char * argv0, std::ostream & to = std::cout);

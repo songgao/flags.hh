@@ -70,7 +70,7 @@ void Flags::Var(T & var, char shortFlag, std::string longFlag, T defaultValue, s
   this->options.push_back(op);
 }
 
-void Flags::Flag(bool & var, char shortFlag, std::string longFlag, std::string description, std::string descriptionGroup) {
+void Flags::Bool(bool & var, char shortFlag, std::string longFlag, std::string description, std::string descriptionGroup) {
   struct option op;
   this->entry(op, shortFlag, longFlag, "(unset)", description, descriptionGroup);
 

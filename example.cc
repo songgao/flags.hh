@@ -10,7 +10,7 @@ int main(int argc, char ** argv) {
   uint32_t var2;
   int32_t var3;
   std::string str;
-  bool flag, help;
+  bool b, help;
 
   Flags flags;
 
@@ -18,9 +18,9 @@ int main(int argc, char ** argv) {
   flags.Var(var2, 'b', "var2", uint32_t(32), "var2 haahahahaha...");
   flags.Var(var3, 'c', "var3", int32_t(42), "var3 is signed!", "Group 1");
   flags.Var(str, 's', "str", std::string("Hello!"), "This is a string, and the description is too long to fit in one line and has to be wrapped blah blah blah blah...", "Group 1");
-  flags.Flag(flag, 'f', "flag", "this is a flag", "Group 2");
+  flags.Bool(b, 'd', "bool", "this is a bool variable", "Group 2");
 
-  flags.Flag(help, 'h', "help", "show this help and exit", "Group 3");
+  flags.Bool(help, 'h', "help", "show this help and exit", "Group 3");
 
   if (!flags.Parse(argc, argv)) {
     flags.PrintHelp(argv[0]);
@@ -34,7 +34,7 @@ int main(int argc, char ** argv) {
   std::cout << "var2: " << var2 << std::endl;
   std::cout << "var3: " << var3 << std::endl;
   std::cout << "str:  " << str << std::endl;
-  std::cout << "flag: " << (flag ? "set" : "unset") << std::endl;
+  std::cout << "b:    " << (b ? "set" : "unset") << std::endl;
 
   return 0;
 }
