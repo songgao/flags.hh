@@ -1,8 +1,12 @@
-# flags.cc
+# flags.hh
 
-A light-weight `getopt` wrapper for C++. Just two header files.
+A simple `getopt` wrapper for C++ in one header file.
 
 ## Usage
+
+```
+#include "flags.hh"
+```
 
 ### Declaration
 

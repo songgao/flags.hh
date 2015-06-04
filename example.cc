@@ -1,4 +1,3 @@
-
 /* Song Gao <song@gao.io> | June 2015 */
 
 #include "Flags.hh"
