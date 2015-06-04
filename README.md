@@ -73,6 +73,7 @@ void PrintHelp(char * argv0, std::ostream & to = std::cout);
 
 #include "Flags.hh"
 
+#include <cstdint>
 #include <iostream>
 
 int main(int argc, char ** argv) {
@@ -104,7 +105,7 @@ int main(int argc, char ** argv) {
   std::cout << "var2: " << var2 << std::endl;
   std::cout << "var3: " << var3 << std::endl;
   std::cout << "str:  " << str << std::endl;
-  std::cout << "b: " << (b ? "set" : "unset") << std::endl;
+  std::cout << "b:    " << (b ? "set" : "unset") << std::endl;
 
   return 0;
 }

@@ -2,6 +2,7 @@
 
 #include "Flags.hh"
 
+#include <cstdint>
 #include <iostream>
 
 int main(int argc, char ** argv) {
