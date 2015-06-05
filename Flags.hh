@@ -77,7 +77,7 @@ class Flags {
 
 
 template <typename T>
-void Flags::entry(struct option & op, char shortFlag, std::string longFlag, T & defaultValue, std::string description, std::string descriptionGroup) {
+inline void Flags::entry(struct option & op, char shortFlag, std::string longFlag, T & defaultValue, std::string description, std::string descriptionGroup) {
   if (!shortFlag && !longFlag.size()) {
     throw std::string("no flag specified");
   }
@@ -124,7 +124,7 @@ void Flags::entry(struct option & op, char shortFlag, std::string longFlag, T & 
 }
 
 template <typename T>
-void Flags::Var(T & var, char shortFlag, std::string longFlag, T defaultValue, std::string description, std::string descriptionGroup) {
+inline void Flags::Var(T & var, char shortFlag, std::string longFlag, T defaultValue, std::string description, std::string descriptionGroup) {
   struct option op;
   this->entry(op, shortFlag, longFlag, defaultValue, description, descriptionGroup);
 
@@ -138,7 +138,7 @@ void Flags::Var(T & var, char shortFlag, std::string longFlag, T defaultValue, s
   this->options.push_back(op);
 }
 
-void Flags::Bool(bool & var, char shortFlag, std::string longFlag, std::string description, std::string descriptionGroup) {
+inline void Flags::Bool(bool & var, char shortFlag, std::string longFlag, std::string description, std::string descriptionGroup) {
   struct option op;
   this->entry(op, shortFlag, longFlag, "(unset)", description, descriptionGroup);
 
@@ -152,7 +152,7 @@ void Flags::Bool(bool & var, char shortFlag, std::string longFlag, std::string d
   this->options.push_back(op);
 }
 
-bool Flags::Parse(int argc, char ** argv) {
+inline bool Flags::Parse(int argc, char ** argv) {
   this->options.push_back({NULL, 0, NULL, 0});
   int ch;
   while ((ch = getopt_long(argc, argv, this->optionStr.c_str(), &this->options[0], NULL)) != -1) {
@@ -170,7 +170,7 @@ bool Flags::Parse(int argc, char ** argv) {
   return true;
 }
 
-void Flags::PrintHelp(char * argv0, std::ostream & to) {
+inline void Flags::PrintHelp(char * argv0, std::ostream & to) {
   to << "Usage: " << argv0 << " [options]" << std::endl <<std::endl;
   for (auto& it : this->help) {
     if (it.first.size()) {
@@ -184,7 +184,7 @@ void Flags::PrintHelp(char * argv0, std::ostream & to) {
 }
 
 template <typename T>
-void Flags::set(T & var, std::string optarg) {
+inline void Flags::set(T & var, std::string optarg) {
   std::stringstream ss(optarg);
   ss >> var;
 }
