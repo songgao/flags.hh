@@ -68,7 +68,6 @@ void PrintHelp(char * argv0, std::ostream & to = std::cout);
 ### Code
 
 ```c++
-
 /* Song Gao <song@gao.io> | June 2015 */
 
 #include "Flags.hh"
@@ -88,7 +87,7 @@ int main(int argc, char ** argv) {
   flags.Var(var1, 'a', "var1", uint64_t(64), "This is var1!");
   flags.Var(var2, 'b', "var2", uint32_t(32), "var2 haahahahaha...");
   flags.Var(var3, 'c', "var3", int32_t(42), "var3 is signed!", "Group 1");
-  flags.Var(str, 's', "str", std::string("Hello!"), "This is a string, and the description is too long to fit in one line and has to be wrapped blah blah blah blah...", "Group 1");
+  flags.Var(str, 's', "str", std::string("Hello World!"), "This is a string, and the description is too long to fit in one line and has to be wrapped blah blah blah blah...", "Group 1");
   flags.Bool(b, 'd', "bool", "this is a bool variable", "Group 2");
 
   flags.Bool(help, 'h', "help", "show this help and exit", "Group 3");
@@ -125,7 +124,7 @@ Usage: ./example [options]
 Group 1:
   -c --var3 [default: 42]
       var3 is signed!
-  -s --str [default: Hello!]
+  -s --str [default: Hello World!]
       This is a string, and the description is too long to fit in one line and h
       as to be wrapped blah blah blah blah...
 
@@ -140,11 +139,11 @@ Group 3:
 ```
 
 ```
-$ ./example -a1 --var2 2 -c 3 -sHahaha --bool
+$ ./example -a1 --var2 2 -c 3 -s 'multi word string' --bool
 var1: 1
 var2: 2
 var3: 3
-str:  Hahaha
+str:  multi word string
 b:    set
 ```
 
@@ -153,6 +152,6 @@ $ ./example
 var1: 64
 var2: 32
 var3: 42
-str:  Hello!
+str:  Hello World!
 b:    unset
 ```

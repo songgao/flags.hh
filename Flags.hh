@@ -188,5 +188,9 @@ inline void Flags::set(T & var, std::string optarg) {
   std::stringstream ss(optarg);
   ss >> var;
 }
+template <>
+inline void Flags::set<std::string>(std::string & var, std::string optarg) {
+  var = optarg;
+}
 
 #endif
