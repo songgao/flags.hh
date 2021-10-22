@@ -111,13 +111,27 @@ inline void Flags::entry(struct option & op, char shortFlag, std::string longFla
   }
   ss << "[default: " << defaultValue << "]";
   ss << std::endl;
+
+  std::string tok;
+  std::size_t cpos;
+
   constexpr size_t step = 80 - 6;
-  for (size_t i = 0; i < description.size(); i += step) {
+  for (size_t i = 0; i < description.size(); /* i += step */ ) {
     ss << "      ";
     if (i + step < description.size()) {
-      ss << description.substr(i, step) << std::endl;
+      // don't split in the middle of a word
+      tok  = description.substr(i, step);
+      cpos = tok.find_last_of(" \t\n\r");
+      if ((cpos == std::string::npos) || (cpos == 0)) {
+        ss << tok << std::endl;
+        i += step;
+      } else {
+        ss << tok.substr(0, cpos) << std::endl;
+        i += (cpos + 1); // mind cut char
+      }
     } else {
       ss << description.substr(i);
+      i += step;
     }
   }
   this->help[descriptionGroup].push_back(ss.str());
